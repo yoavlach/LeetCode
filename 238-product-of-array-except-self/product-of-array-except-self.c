@@ -3,7 +3,6 @@
  */
 int* productExceptSelf(int* nums, int numsSize, int* returnSize) {
     int i = 0, j = 0, product = 0, zerosCounter = 0;
-    bool hasZero = false;
     int* answer = (int*)calloc(numsSize, sizeof(int));
     if(!answer)
     {
@@ -23,7 +22,6 @@ int* productExceptSelf(int* nums, int numsSize, int* returnSize) {
         }
         else
         {
-            hasZero = true;
             zerosCounter++;
         }
     }
@@ -33,7 +31,7 @@ int* productExceptSelf(int* nums, int numsSize, int* returnSize) {
     }
     for(i = 0; i < numsSize; i++)
     {
-        if(hasZero)
+        if(zerosCounter)
         {
             if(nums[i] != 0)
             {

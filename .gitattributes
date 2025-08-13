@@ -1,8 +1,0 @@
-# Treat all .c files as C
-*.c linguist-language=C
-
-# Treat all .py files as Python
-*.py linguist-language=Python
-
-# Ignore everything else from language stats
-* linguist-vendored

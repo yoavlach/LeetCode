@@ -1,14 +1,13 @@
+import re
 class Solution(object):
     def reverseWords(self, s):
         """
         :type s: str
         :rtype: str
         """
+        s = s.strip()
+        s = re.sub(r' {2,}', ' ', s)
         s = s.split(' ')
-        no_trailing = []
-        for i in s:
-            if i != '':
-                no_trailing.append(i)
-        no_trailing.reverse()
-        return ' '.join(no_trailing)
+        s = s[::-1]
+        return ' '.join(s)
             

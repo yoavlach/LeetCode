@@ -1,18 +1,15 @@
-class Solution(object):
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
-        largest_common = ""
-        for i in range(len(strs[0]) + 1):
-            curr = strs[0][:i]
-            is_in_all = True
-            for j in strs:
-                if j[:len(curr)] != curr:
-                    is_in_all = False
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        curr_str = ""
+        longest_prefix = ""
+        for i in range(len(strs[0])):
+            curr_str += strs[0][i]
+            is_prefix = True
+            for j in strs[0:]:
+                if not j.startswith(curr_str):
+                    is_prefix = False
                     break
-            if is_in_all and len(curr) > len(largest_common):
-                largest_common = curr
-        return largest_common
-            
+            if is_prefix and len(longest_prefix) < len(curr_str):
+                longest_prefix = curr_str
+        return longest_prefix
+        

@@ -9,11 +9,7 @@ class Solution(object):
             if i.isdigit() or (i[1:].isdigit() and i[0] == "-"):
                 stack.append(int(i))
             elif i == '+':
-                first = stack[-1]
-                stack.pop()
-                second = stack[-1]
-                stack.append(first)
-                stack.append(first + second)
+                stack.append(stack[-1] + stack[-2])
             elif i == 'D':
                 stack.append(stack[-1] * 2)
             elif i == 'C':

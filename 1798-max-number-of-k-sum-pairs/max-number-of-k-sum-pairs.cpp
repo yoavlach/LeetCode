@@ -22,7 +22,8 @@ public:
         for (auto it : numsAndIndexes)
         {
             currVal = it.first;
-            if (numsAndIndexes.find(k - currVal) != numsAndIndexes.end())
+            auto res = numsAndIndexes.find(k - currVal);
+            if (res != numsAndIndexes.end())
             {
                 if (currVal * 2 == k)
                 {
@@ -30,8 +31,8 @@ public:
                 }
                 else
                 {
-                    counter += it.second.size() > numsAndIndexes.find(k - currVal)->second.size() ? 
-                        numsAndIndexes.find(k - currVal)->second.size() : it.second.size();
+                    counter += it.second.size() > res->second.size() ?
+                        res->second.size() : it.second.size();
                     numsAndIndexes.erase(k - currVal);
                 }
             }

@@ -5,7 +5,6 @@ public:
         string formattedSubStr = "";
         char currLetter = ' ';
         int rangeStart = 0, currLetterCounter = 0;
-        bool needToUpdateCurrLetter = true;
         for (int i = 0; i < chars.size(); i++)
         {
             if (i == 0)
@@ -17,7 +16,6 @@ public:
                 currLetterCounter++;
             if(currLetter != chars[i] || i == chars.size() - 1)
             {
-                needToUpdateCurrLetter = true;
                 formattedSubStr = currLetter + (currLetterCounter == 1 ? "" : to_string(currLetterCounter));
                 chars.erase(chars.begin() + rangeStart, chars.begin() + rangeStart + currLetterCounter);
                 for (int j = 0; j < formattedSubStr.length(); j++)

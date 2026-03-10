@@ -27,9 +27,7 @@ public:
             if (i && seen.find(i) == seen.end())
             {
                 if (i->val >= currPathMax)
-                {
                     currPathMax = i->val;
-                }
                 goodNodesCounter += goodNodes(i);
             }
         }

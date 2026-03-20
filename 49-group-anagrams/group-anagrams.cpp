@@ -5,13 +5,14 @@ public:
         vector<vector<string>> anagrams;
         vector<int> letterCounter(26);
         map<vector<int>, vector<string>> letterCounterAndAnagrams;
-        for (string i : strs)
+        for (const string& i : strs)
         {
             fill(letterCounter.begin(), letterCounter.end(), 0);
             for (char j : i)
-                letterCounter[j - 97]++;
-            if (letterCounterAndAnagrams.find(letterCounter) != letterCounterAndAnagrams.end())
-                letterCounterAndAnagrams.find(letterCounter)->second.push_back(i);
+                letterCounter[j - 'a']++;
+            auto curr = letterCounterAndAnagrams.find(letterCounter);
+            if (curr != letterCounterAndAnagrams.end())
+                curr->second.push_back(i);
             else
                 letterCounterAndAnagrams[letterCounter] = { i };
         }

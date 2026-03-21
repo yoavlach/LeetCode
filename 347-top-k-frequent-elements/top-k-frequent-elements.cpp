@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        map<int, int> appearanceCounter;
+        unordered_map<int, int> appearanceCounter;
         vector<int> res(k);
         vector<set<int>> appearAsIndex(nums.size() + 1);
         int insertCounter = 0;

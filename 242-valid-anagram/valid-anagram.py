@@ -5,17 +5,23 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        letters_and_appearances = {}
+        chars_and_appearances = {}
+        
         for i in s:
-            if i in letters_and_appearances:
-                letters_and_appearances[i] += 1
+            if i in chars_and_appearances:
+                chars_and_appearances[i] += 1
             else:
-                letters_and_appearances[i] = 1
+                chars_and_appearances[i] = 1
+        
         for i in t:
-            if i in letters_and_appearances and letters_and_appearances[i] > 0:
-                letters_and_appearances[i] -= 1
+            if i in chars_and_appearances:
+                chars_and_appearances[i] -= 1
+                if chars_and_appearances[i] < 0:
+                    return False
             else:
                 return False
-        return max(letters_and_appearances.values()) == 0
-
         
+        for i in chars_and_appearances.values():
+            if i != 0:
+                return False
+        return True

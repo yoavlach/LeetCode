@@ -4,7 +4,5 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        nums_and_counters = set()
-        for i in nums:
-            nums_and_counters.add(i)
+        nums_and_counters = set(nums)
         return len(nums_and_counters) != len(nums)

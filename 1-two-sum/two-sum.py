@@ -5,11 +5,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        num_and_remaining = {}
-        for i in range(len(nums)):
-            if target - nums[i] in num_and_remaining:
-                return [num_and_remaining[target - nums[i]], i]
-            else:
-                num_and_remaining[nums[i]] = i
-        return []
         
+        nums_and_indexes = {}
+        for i in range(len(nums)):
+            if target - nums[i] in nums_and_indexes:
+                return [i, nums_and_indexes[target - nums[i]]]
+            else:
+                nums_and_indexes[nums[i]] = i
+        
+        return []

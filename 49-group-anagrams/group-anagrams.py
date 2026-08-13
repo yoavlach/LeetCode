@@ -4,22 +4,27 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-        anagrams = []
-        letters_and_appearances = []
+
+        all_anagrams = {}
+        curr_chars_and_appearances = {}
+
         for i in strs:
-            curr_letters_and_appearances = {}
             for j in i:
-                if j in curr_letters_and_appearances:
-                    curr_letters_and_appearances[j] += 1
+                if j in curr_chars_and_appearances:
+                    curr_chars_and_appearances[j] += 1
                 else:
-                    curr_letters_and_appearances[j] = 0
-            found_anagram = False
-            for k in range(len(letters_and_appearances)):
-                if letters_and_appearances[k] == curr_letters_and_appearances:
-                    anagrams[k].append(i)
-                    found_anagram = True
-            if not found_anagram or not anagrams:
-                anagrams.append([i])
-                letters_and_appearances.append(curr_letters_and_appearances)
-        return anagrams
-        
+                    curr_chars_and_appearances[j] = 1
+
+            key_l = tuple(sorted(curr_chars_and_appearances.items()))
+            if key_l in all_anagrams:
+                all_anagrams[key_l].append(i)
+            else:
+                all_anagrams[key_l] = [i]
+
+            curr_chars_and_appearances = {}
+
+        anagram_list = []
+        for i in all_anagrams.values():
+            anagram_list.append(i)
+
+        return anagram_list

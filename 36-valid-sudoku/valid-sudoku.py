@@ -5,12 +5,10 @@ class Solution(object):
         :rtype: bool
         """
 
-        s_len = len(board[0])
-
-        for i in range(s_len):
+        for i in range(9):
             curr_h = set()
             curr_v = set()
-            for j in range(s_len):
+            for j in range(9):
                 if board[i][j] != '.':
                     if board[i][j] in curr_h:
                         return False
@@ -19,19 +17,6 @@ class Solution(object):
                     if board[j][i] in curr_v:
                         return False
                     curr_v.add(board[j][i])
-
-        # for k in range(s_len):
-        #     for i in range(0, s_len, 3):
-        #         curr_g = set()
-        #         for j in range(i, i + 2):
-        #             if board[i][j] != '.':
-        #                 if board[i][j] in curr_g:
-        #                     return False
-        #                 curr_g.add(board[i][j])
-        #             if board[j][i] != '.' and i != j:
-        #                 if board[j][i] in curr_g:
-        #                     return False
-        #                 curr_g.add(board[j][i])
 
         for start_x in range(0, 9, 3):
             for start_y in range(0, 9, 3):

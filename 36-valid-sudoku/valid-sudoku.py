@@ -4,29 +4,42 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
-        for i in range(9):
-            seen_nums = set()
-            for j in board:
-                if j[i] != '.':
-                    if j[i] in seen_nums:
-                        return False
-                    seen_nums.add(j[i])
-        for i in board:
-            seen_nums = set()
-            for j in i:
-                if j != '.':
-                    if j in seen_nums:
-                        return False
-                    seen_nums.add(j)
-        all_nums_in_squares = [set() for i in range(9)]
-        curr_add = 0
-        for i in range(len(board)):
-            if i % 3 == 0:
-                curr_add = i
-            for j in range(len(board[i])):
+
+        s_len = len(board[0])
+
+        for i in range(s_len):
+            curr_h = set()
+            curr_v = set()
+            for j in range(s_len):
                 if board[i][j] != '.':
-                    if board[i][j] in all_nums_in_squares[curr_add + j // 3]:
+                    if board[i][j] in curr_h:
                         return False
-                    all_nums_in_squares[curr_add + j // 3].add(board[i][j])
+                    curr_h.add(board[i][j])
+                if board[j][i] != '.':
+                    if board[j][i] in curr_v:
+                        return False
+                    curr_v.add(board[j][i])
+
+        # for k in range(s_len):
+        #     for i in range(0, s_len, 3):
+        #         curr_g = set()
+        #         for j in range(i, i + 2):
+        #             if board[i][j] != '.':
+        #                 if board[i][j] in curr_g:
+        #                     return False
+        #                 curr_g.add(board[i][j])
+        #             if board[j][i] != '.' and i != j:
+        #                 if board[j][i] in curr_g:
+        #                     return False
+        #                 curr_g.add(board[j][i])
+
+        for start_x in range(0, 9, 3):
+            for start_y in range(0, 9, 3):
+                curr_g = set()
+                for y in range(start_y, start_y + 3):
+                    for x in range(start_x, start_x + 3):
+                        if board[x][y] != '.':
+                            if board[x][y] in curr_g:
+                                return False
+                            curr_g.add(board[x][y])
         return True
-        
